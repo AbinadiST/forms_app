@@ -8,7 +8,8 @@ class CubitCounterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (_) => CounterCubit(), child: const _CubitCounterView());
+        create: (_) => CounterCubit(), 
+        child: const _CubitCounterView());
   }
 }
 
@@ -19,18 +20,26 @@ class _CubitCounterView extends StatelessWidget {
 
   void increaseCounterBy( BuildContext context, [ int value = 1] ){
     context.read<CounterCubit>().increaseBy( value );
-    
+
   }
 
   @override
   Widget build(BuildContext context) {
 
 
-    final counterState = context.watch<CounterCubit>().state;  // para escuchar los cambios que tiene el STATE
+    // final counterState = context.watch<CounterCubit>().state;  // para escuchar los cambios que tiene el STATE
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cubit Counter: ${ counterState.transactionCount}'),
+        title: context.select( (CounterCubit value) { 
+          
+          //? Para evitar CONTEXT.WATCH() que valida todos los widgets, hacemos esto y sólo valida este bloc
+          //? S19 => EQUATABLE => min 8:00
+          
+        return Text('Cubit Counter: ${ value.state.transactionCount }');
+
+        }), 
+
         actions: [
           IconButton(
               onPressed: () {
