@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 
@@ -25,7 +26,12 @@ class HomeScreen extends StatelessWidget {
             subtitle: const Text('Gestor de estado compuesto'),
             trailing: const Icon( Icons.arrow_forward_ios_rounded ),
             onTap: () => context.push('/counter-bloc'),
-          )
+          ), 
+
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Divider()
+            )
         ],
       ),
     );

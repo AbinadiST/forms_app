@@ -12,3 +12,7 @@ class CounterIncreased extends CounterEvent {
   const CounterIncreased(this.value);
 
 }
+
+// CounterReset TAREA  ----
+
+class CounterReset extends CounterEvent {}
