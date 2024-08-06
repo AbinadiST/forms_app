@@ -68,7 +68,8 @@ class _RegisterFormState extends State<_RegisterForm> {
 
     final registerCubit = context.watch<RegisterCubit>(); // se realiza la refencia para el REGISTER CUBIT
 
-    return Form(  //WIGET que controlará nuestro formulario
+    return Form(  //WIGET que controlará nuestro formulario ------------------------------
+      key: _formKey,
       child: Column(
         children: [
 
